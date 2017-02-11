@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="./bower_components/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+    <!-- Import custome css -->
+    <style media="screen">
+      #header-title{
+        color: #26a69a;
+        margin-bottom: 10%;
+      }
+
+      .title-color{
+        color: #26a69a;
+      }
+    </style>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Memo Web App</title>
+  </head>
+
+  <body>
+
+    <!-- content -->
+    <div class="container">
+
+      <!-- heading -->
+      <h1 class="center" id="header-title">MEMO WEB APP</h1>
+
+      <!-- heading 2 -->
+      <h3 class="title-color">Create your Memo Here</h3>
+
+      <!-- form create new memo -->
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s5">
+              <input placeholder="Your Title Memo, Ex: Remember today" id="create_memo_title" type="text" class="validate">
+              <label for="first_name">Memo Title</label>
+            </div>
+            <div class="input-field col s6">
+              <input placeholder="Your Memo Description, Ex: Today i must pick up ......" id="create_memo_text" type="text" class="validate">
+              <label for="first_name">Memo Description</label>
+            </div>
+            <div class="input-field col s1">
+              <button type="button" name="button" class="waves-effect waves-light btn">Create</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Modal Trigger -->
+      <!-- <div class="center">
+        <a class="waves-effect waves-light btn" href="#modal2">modal 2</a>
+      </div> -->
+
+      <!-- memo list -->
+      <div id="memo-list-content">
+
+        <table class="bordered">
+          <thead>
+            <tr>
+                <th data-field="number">NO.</th>
+                <th data-field="tile">MEMO TITLE</th>
+                <th data-field="description">MEMO TEXT</th>
+                <th data-field="action" class="center">OPTION</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>1.</td>
+              <td>Hacktiv8</td>
+              <td>Memo Web App</td>
+              <td>
+                <div class="center">
+                  <a class="waves-effect amber darken-2 btn" href="#modal-edit">EDIT</a>
+                  <a class="waves-effect red btn" href="#modal-delete">DELETE</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div> <!-- memo-list-content -->
+
+    </div>
+
+    <!-- Modal -->
+    <div id="modal-edit" class="modal">
+      <div class="modal-content">
+        <h4 class="title-color center">EDIT MEMO</h4>
+        <p>A bunch of text</p>
+      </div>
+      <div class="modal-footer">
+        <a class=" modal-action modal-close waves-effect waves-green btn-flat" onclick="myFunction()" >SAVE</a>
+      </div>
+    </div>
+
+    <div id="modal-delete" class="modal">
+      <div class="modal-content">
+        <h4 class="center">Modals with Button trigger</h4>
+        <input type="text" name="" value="pertama" oninput="data()">
+        <input type="number" name="" value=100 placeholder="Input must be number">
+      </div>
+      <div class="modal-footer">
+        <a class=" modal-action modal-close waves-effect waves-green btn-flat" onclick="myFunction()" >Agree</a>
+      </div>
+    </div>
+
+    <!--Import javascript library-->
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="./bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="./bower_components/materialize/dist/js/materialize.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    /* load all modal first */
+    $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('#modal-edit').modal();
+      $('#modal-delete').modal();
+    });
+
+    function data(){
+      alert("bisa");
+    }
+
+
+    </script>
+  </body>
+</html>

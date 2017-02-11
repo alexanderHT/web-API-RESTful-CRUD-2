@@ -1,0 +1,24 @@
+{
+  "name": "memo-client",
+  "authors": [
+    "alexanderHT <alexanderhendrawan@gmail.com>"
+  ],
+  "description": "memo web app for client",
+  "main": "index.html",
+  "keywords": [
+    "memo"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "^0.98.0",
+    "jquery": "^3.1.1"
+  }
+}
