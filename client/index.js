@@ -11,6 +11,12 @@ $(document).ready(function(){
   Materialize.updateTextFields();
 });
 
+/* function custome date */
+function convertDate(date){
+  let cd = new Date(date)
+  return `${cd.getDate()} - ${cd.getMonth() + 1} - ${cd.getFullYear()}`
+}
+
 /* function to get all memo list from server */
 function getAllMemoList(){
   $.ajax({
@@ -18,17 +24,13 @@ function getAllMemoList(){
     type: "GET",
     success: function( result ) {
       var tmp = "";
-      var dateCreate = "";
-      var dateUpdate = "";
       for (var i = 0; i < result.length; i++) {
-        dateCreate = new Date(result[i].createdAt)
-        dateUpdate = new Date(result[i].updatedAt)
         tmp +=
         `<tr id="${result[i]._id}">
           <td>${result[i].title}</td>
           <td>${result[i].memo_text}</td>
-          <td>${dateCreate.getFullYear()} - ${dateCreate.getMonth() + 1} - ${dateCreate.getDate()}</td>
-          <td>${dateUpdate.getFullYear()} - ${dateUpdate.getMonth() + 1} - ${dateUpdate.getDate()}</td>
+          <td>${convertDate(result[i].createdAt)}</td>
+          <td>${convertDate(result[i].updatedAt)}</td>
           <td>
             <div class="center">
               <a class="waves-effect amber darken-2 btn" href="#modal-edit" onclick="preEditMemo('${result[i]._id}')">EDIT</a>
@@ -60,14 +62,12 @@ function createMemo(){
       memo_text: $('#create_memo_text').val()
     },
     success: function( result ) {
-      var dateCreate = new Date(result.createdAt)
-      var dateUpdate = new Date(result.updatedAt)
       $('#memo-list').prepend(`
         <tr id="${result._id}">
           <td>${result.title}</td>
           <td>${result.memo_text}</td>
-          <td>${dateCreate.getFullYear()} - ${dateCreate.getMonth() + 1} - ${dateCreate.getDate()}</td>
-          <td>${dateUpdate.getFullYear()} - ${dateUpdate.getMonth() + 1} - ${dateUpdate.getDate()}</td>
+          <td>${convertDate(result.createdAt)}</td>
+          <td>${convertDate(result.updatedAt)}</td>
           <td>
             <div class="center">
               <a class="waves-effect amber darken-2 btn" href="#modal-edit" onclick="preEditMemo('${result._id}')">EDIT</a>
@@ -130,12 +130,10 @@ function EditMemo(id){
       description: $('#edit_memo_text').val()
     },
     success: function( result ){
-      var dateCreate = new Date(result.createdAt)
-      var dateUpdate = new Date(result.updatedAt)
       $(`#${result._id} td`)[0].innerHTML = `${result.title}`
       $(`#${result._id} td`)[1].innerHTML = `${result.memo_text}`
-      $(`#${result._id} td`)[2].innerHTML = `${dateCreate.getFullYear()} - ${dateCreate.getMonth() + 1} - ${dateCreate.getDate()}`
-      $(`#${result._id} td`)[3].innerHTML = `${dateUpdate.getFullYear()} - ${dateUpdate.getMonth() + 1} - ${dateUpdate.getDate()}`
+      $(`#${result._id} td`)[2].innerHTML = `${convertDate(result.createdAt)}`
+      $(`#${result._id} td`)[3].innerHTML = `${convertDate(result.updatedAt)}`
     }
   });
 
