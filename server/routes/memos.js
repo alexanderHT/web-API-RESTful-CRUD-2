@@ -16,7 +16,8 @@ const memo_controller = require('../controllers/memo_controller');
 */
 
 router.get('/', memo_controller.showAllMemo);
-router.post('/', memo_controller.createNewMemo),
-
+router.post('/', memo_controller.createNewMemo);
+router.delete('/', memo_controller.deleteOneMemo);
+router.put('/', memo_controller.editOneMemo);
 
 module.exports = router;
