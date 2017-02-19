@@ -31,10 +31,6 @@ var memos = {
       res.json(data._id)
     });
   },
-  /* function to search data memo */
-  searchMemo : function(req, res, next){
-    res.json("search memo");
-  },
   /* function to create new data memo */
   createNewMemo : function(req, res, next){
     // create a new memo
